@@ -1,0 +1,32 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-h": "pane::ActivatePreviousItem",
+      "alt-l": "pane::ActivateNextItem",
+      "alt-q": "pane::CloseActiveItem",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space e f": "project_panel::ToggleFocus",
+      "space e t": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "Workspace && !Editor && !Terminal",
+    "bindings": {
+      "space e f": "project_panel::ToggleFocus",
+      "space e t": "workspace::ToggleLeftDock",
+    },
+  },
+]
+
