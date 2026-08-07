@@ -28,5 +28,54 @@
       "space e t": "workspace::ToggleLeftDock",
     },
   },
-]
+  // tmux-flavoured pane management. Prefix mirrors `set -g prefix2 C-Space`
+  // from .tmux.conf. Excluded from Terminal so tmux itself keeps the keystroke.
+  {
+    "context": "Workspace && !Terminal",
+    "bindings": {
+      // tmux names a split after its divider, Zed after the direction it grows
+      "ctrl-space \"": "pane::SplitDown", // tmux: split-window
+      "ctrl-space %": "pane::SplitRight", // tmux: split-window -h
 
+      // hop panes
+      "ctrl-space h": "workspace::ActivatePaneLeft",
+      "ctrl-space j": "workspace::ActivatePaneDown",
+      "ctrl-space k": "workspace::ActivatePaneUp",
+      "ctrl-space l": "workspace::ActivatePaneRight",
+      "ctrl-space o": "workspace::ActivateNextPane",
+      "ctrl-space ;": "workspace::ActivatePreviousPane",
+      "ctrl-space ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-space ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-space ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-space ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-space ctrl-;": "workspace::ActivatePreviousPane",
+
+      // shuffle panes
+      "ctrl-space ctrl-o": "workspace::SwapPaneAdjacent", // tmux: rotate-window
+      "ctrl-space {": "workspace::SwapPaneLeft",
+      "ctrl-space }": "workspace::SwapPaneRight",
+
+      "ctrl-space z": "workspace::ToggleZoom",
+      "ctrl-space x": ["pane::CloseAllItems", { "close_pinned": false }],
+      "ctrl-space c": "workspace::NewFile", // tmux: new-window
+      "ctrl-space ctrl-f": "terminal_panel::Toggle",
+    },
+  },
+
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-space": null,
+    },
+  },
+
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "alt-shift-h": "vim::ResizePaneLeft", // narrower
+      "alt-shift-j": "vim::ResizePaneDown", // shorter
+      "alt-shift-k": "vim::ResizePaneUp", // taller
+      "alt-shift-l": "vim::ResizePaneRight", // wider
+    },
+  },
+]
