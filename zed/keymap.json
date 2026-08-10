@@ -78,4 +78,14 @@
       "alt-shift-l": "vim::ResizePaneRight", // wider
     },
   },
+
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"], // was file_finder::Toggle
+      "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"], // was workspace::NewFile
+      "ctrl-t": ["terminal::SendKeystroke", "ctrl-t"], // was project_symbols::Toggle
+      "ctrl-k": ["terminal::SendKeystroke", "ctrl-k"], // was a 27-chord prefix
+    },
+  },
 ]
