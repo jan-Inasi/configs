@@ -88,4 +88,6 @@
       "ctrl-k": ["terminal::SendKeystroke", "ctrl-k"], // was a 27-chord prefix
     },
   },
+
+  "ctrl-j": null, // codex default way to start a new line
 ]
