@@ -1,0 +1,15 @@
+[user]
+	email = ignacymajkusiak@gmail.com
+	name = jan-inasi
+[core]
+	editor = nvim
+[alias]
+	s = status
+	ss = status --short
+	b = branch
+	graph = log --oneline --graph
+	whoami = !git config user.name && git config user.email
+	c = commit
+	a = add
+	d = diff
+	co = checkout
