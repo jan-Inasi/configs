@@ -4,6 +4,12 @@ set -euo pipefail
 git config --global user.name jan-inasi
 git config --global user.email ignacymajkusiak@gmail.com
 
+git config --global pull.rebase true
+
+git config --global push.autoSetupRemote true
+
+# delete local refs tobranches gone from remote
+git config --global fetch.prune true
 
 exists() {
     command -v "$1" >/dev/null 2>&1
