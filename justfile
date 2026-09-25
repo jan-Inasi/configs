@@ -15,24 +15,24 @@ _default:
 
 # install tmux config file
 tmux *flags:
-    {{setup-script}} {{source-tmux}} {{target-tmux}} {{flags}}
+    {{ setup-script }} {{ source-tmux }} {{ target-tmux }} {{ flags }}
 
 # install zed keymap
 zed *flags:
-    {{setup-script}} {{source-zed-keymap}} {{target-zed-keymap}} {{flags}}
+    {{ setup-script }} {{ source-zed-keymap }} {{ target-zed-keymap }} {{ flags }}
 
 # install env file
 env *flags:
-    {{setup-script}} {{source-env}} .env {{flags}}
+    {{ setup-script }} {{ source-env }} .env {{ flags }}
 
 # installed vs uninstalled tmux config file
 diff-tmux:
-    {{diff-script}} {{source-tmux}} {{target-tmux}}
+    {{ diff-script }} {{ source-tmux }} {{ target-tmux }}
 
 # installed vs uninstalled env file
 diff-env:
-    {{diff-script}} {{source-env}} .env
+    {{ diff-script }} {{ source-env }} .env
 
 # installed vs uninstalled zed keymap
 diff-zed:
-    {{diff-script}} {{source-zed-keymap}} {{target-zed-keymap}}
+    {{ diff-script }} {{ source-zed-keymap }} {{ target-zed-keymap }}
