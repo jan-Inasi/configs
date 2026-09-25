@@ -1,4 +1,5 @@
 set dotenv-load
+set default-list := true
 
 source-tmux := "tmux/.tmux.conf"
 source-env := ".env.example"
@@ -9,9 +10,6 @@ target-zed-keymap := env("CONFIG_TARGET_ZED_KEYMAP", "$HOME/.config/zed/keymap.j
 
 setup-script := "./scripts/maybe_reverse.sh ./scripts/setup.sh"
 diff-script := "./scripts/gitdiff.sh"
-
-_default:
-    @just --list
 
 # install tmux config file
 tmux *flags:
