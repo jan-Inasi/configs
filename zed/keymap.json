@@ -86,8 +86,8 @@
       "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"], // was workspace::NewFile
       "ctrl-t": ["terminal::SendKeystroke", "ctrl-t"], // was project_symbols::Toggle
       "ctrl-k": ["terminal::SendKeystroke", "ctrl-k"], // was a 27-chord prefix
+
+      "ctrl-j": null,  // codex default way to start a new line
     },
   },
-
-  "ctrl-j": null, // codex default way to start a new line
 ]
