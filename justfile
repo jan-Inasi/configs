@@ -7,23 +7,23 @@ source-zed-keymap := "zed/keymap.json"
 target-tmux := env("CONFIG_TARGET_TMUX", "$HOME/.tmux.conf")
 target-zed-keymap := env("CONFIG_TARGET_ZED_KEYMAP", "$HOME/.config/zed/keymap.json")
 
-setup-script := "./scripts/setup.sh"
+setup-script := "./scripts/maybe_reverse.sh ./scripts/setup.sh"
 diff-script := "./scripts/gitdiff.sh"
 
 _default:
     @just --list
 
 # install tmux config file
-tmux:
-    {{setup-script}} {{source-tmux}} {{target-tmux}}
+tmux *flags:
+    {{setup-script}} {{source-tmux}} {{target-tmux}} {{flags}}
 
 # install zed keymap
-zed:
-    {{setup-script}} {{source-zed-keymap}} {{target-zed-keymap}}
+zed *flags:
+    {{setup-script}} {{source-zed-keymap}} {{target-zed-keymap}} {{flags}}
 
 # install env file
-env:
-    {{setup-script}} {{source-env}} .env
+env *flags:
+    {{setup-script}} {{source-env}} .env {{flags}}
 
 # installed vs uninstalled tmux config file
 diff-tmux:
