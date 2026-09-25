@@ -10,9 +10,15 @@ command -v git >/dev/null || { echo "git is not installed"; exit 1; }
 # check that the target file exists
 [[ -f "$2" ]] || { echo "I can't find the target file at $2"; exit 1; }
 
-git diff --no-index "$1" "$2" || {
-    status=$?
-    # git diff exits 1 when the files simply differ
-    # that's the expected result of running a diff, not a failure
-    (( status == 1 )) || exit "$status"
-}
+status=0
+
+git diff --no-index "$1" "$2" || status=$?
+
+# git diff exits 1 when the files simply differ
+# that's the expected result of running a diff, not a failure
+
+case $status in
+    0) echo "files are the same" ;;
+    1) exit 0 ;;
+    *) exit "$status" ;;
+esac
