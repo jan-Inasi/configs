@@ -40,6 +40,14 @@ else # there's no file nor dir at the tmux destination path
              "(${dest_dir})" >&2
         exit 1
     fi
+
+    if cp "${SOURCE_PATH}" "${TARGET_PATH}"; then
+        echo "Config applied successfully at '${TARGET_PATH}'"
+        exit 0
+    else
+        echo "Failed to apply the config to '${TARGET_PATH}'" >&2
+        exit 1
+    fi
 fi
 
 if cmp -s "${SOURCE_PATH}" "${TARGET_PATH}"; then
