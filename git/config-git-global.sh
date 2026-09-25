@@ -38,3 +38,5 @@ git config --global alias.graph 'log --oneline --graph'
 git config --global alias.whoami \
     '!git config user.name && git config user.email'
 
+git config --global alias.ll \
+    "log --pretty=format:'%C(auto)%h%Creset %C(dim)%ad%Creset %C(auto)%d%Creset%s' --date=short"
