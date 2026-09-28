@@ -13,3 +13,12 @@
 	a = add
 	d = diff
 	co = checkout
+	ll = log --pretty=format:'%C(auto)%h%Creset %C(dim)%ad%Creset %C(auto)%d%Creset%s' --date=short
+[diff]
+	algorithm = histogram
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
+[fetch]
+	prune = true

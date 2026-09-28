@@ -4,9 +4,11 @@ set default-list := true
 source-tmux := "tmux/.tmux.conf"
 source-env := ".env.example"
 source-zed-keymap := "zed/keymap.json"
+source-git := "git/.gitconfig"
 
 target-tmux := env("CONFIG_TARGET_TMUX", "$HOME/.tmux.conf")
 target-zed-keymap := env("CONFIG_TARGET_ZED_KEYMAP", "$HOME/.config/zed/keymap.json")
+target-git := env("CONFIG_TARGET_GIT", "$HOME/.gitconfig")
 
 setup-script := "./scripts/maybe_reverse.sh ./scripts/setup.sh"
 diff-script := "./scripts/gitdiff.sh"
@@ -23,6 +25,14 @@ zed *flags:
 env *flags:
     {{ setup-script }} {{ source-env }} .env {{ flags }}
 
+# extend git config
+git:
+    ./git/config-git-global.sh
+
+# overwrite git config
+git-cp *flags:
+    {{ setup-script }} {{ source-git }} {{ target-git }} {{ flags }}
+
 # installed vs uninstalled tmux config file
 diff-tmux:
     {{ diff-script }} {{ source-tmux }} {{ target-tmux }}
@@ -34,3 +44,7 @@ diff-env:
 # installed vs uninstalled zed keymap
 diff-zed:
     {{ diff-script }} {{ source-zed-keymap }} {{ target-zed-keymap }}
+
+# installed vs uninstalled git config
+diff-git:
+    {{ diff-script }} {{ source-git }} {{ target-git }}
