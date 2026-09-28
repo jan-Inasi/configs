@@ -5,10 +5,12 @@ source-tmux := "tmux/.tmux.conf"
 source-env := ".env.example"
 source-zed-keymap := "zed/keymap.json"
 source-git := "git/.gitconfig"
+source-hx := "hx/config.toml"
 
 target-tmux := env("CONFIG_TARGET_TMUX", "$HOME/.tmux.conf")
 target-zed-keymap := env("CONFIG_TARGET_ZED_KEYMAP", "$HOME/.config/zed/keymap.json")
 target-git := env("CONFIG_TARGET_GIT", "$HOME/.gitconfig")
+target-hx := env("CONFIG_TARGET_HX", "$HOME/.config/helix/config.toml")
 
 setup-script := "./scripts/maybe_reverse.sh ./scripts/setup.sh"
 diff-script := "./scripts/gitdiff.sh"
@@ -33,6 +35,10 @@ git:
 git-cp *flags:
     {{ setup-script }} {{ source-git }} {{ target-git }} {{ flags }}
 
+# install hx config
+hx *flags:
+    {{ setup-script }} {{ source-hx }} {{ target-hx }} {{ flags }}
+
 # installed vs uninstalled tmux config file
 diff-tmux:
     {{ diff-script }} {{ source-tmux }} {{ target-tmux }}
@@ -48,3 +54,7 @@ diff-zed:
 # installed vs uninstalled git config
 diff-git:
     {{ diff-script }} {{ source-git }} {{ target-git }}
+
+# installed vs uninstalled hx config
+diff-hx:
+    {{ diff-script }} {{ source-hx }} {{ target-hx }}

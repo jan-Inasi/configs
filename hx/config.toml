@@ -1,0 +1,78 @@
+theme = "onedark"
+
+
+[editor]
+scrolloff = 5        # default 5
+mouse = true
+default-yank-register = "+"
+scroll-lines = 3
+line-number = "absolute"  # absolute / relative
+cursorline = true
+cursorcolumn = false
+continue-comments = true
+auto-completion = true
+path-completion = true
+gutters = [
+  "diagnostics",
+  "line-numbers",
+  "diff",
+]
+auto-format = false
+auto-info = true
+bufferline = "multiple"  # always / multiple / never
+color-modes = true
+text-width = 80
+workspace-lsp-roots = []
+insert-final-newline = true
+trim-final-newlines = false
+trim-trailing-whitespace = false
+atomic-save = true
+popup-border = "all"   # popup / menu / all / none
+true-color = true
+
+
+[editor.statusline]
+left = [
+  "mode",
+  "version-control",
+  "file-name",
+  "read-only-indicator",
+  "file-modification-indicator",
+]
+center = [
+  "spinner",
+]
+right = [
+  "diagnostics",
+  "workspace-diagnostics",
+  "selections",
+  "register",
+  "position",
+  "total-line-numbers",
+  "file-encoding",
+]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+follow-symlinks = true
+deduplicate-links = true
+parents = true
+ignore = true
+git-ignore = true
+git-global = true
+git-exclude = true
+
+[keys.select]
+0 = "goto_line_start"
+G = "goto_file_end"
+
+[keys.normal]
+0 = "goto_line_start"
+G = "goto_file_end"
+V = ["select_mode", "extend_to_line_bounds"]
+
